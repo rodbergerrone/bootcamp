@@ -1,0 +1,5 @@
+liczba = int(input("Podaj liczbę: "))
+print("Liczba jest większa od 10:", liczba > 10)
+print("Liczba jest mniejsza lub równa 15:", liczba <= 15)
+print("Liczba jest podzielna przez 2:", liczba % 2 == 0)
+print("Liczba jest nieparzysta, podzielna przez 3 i większa od 10 lub jest to liczba 7:", liczba % 2 != 0 and liczba % 3 == 0 and liczba > 10 or liczba == 7)
