@@ -55,3 +55,7 @@ while True:
     if gracz_x == skarb_x and gracz_y == skarb_y:
         print(f"Zrobiłeś {licznik} ruchów i " + end_good)
         break
+    if licznik % 4 == 0:
+        skarb_x = randrange(1, 10)
+        skarb_y = randrange(1, 10)
+        print("Tubylcy przeciągneli skarb w inne miejsce!!")
