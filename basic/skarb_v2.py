@@ -16,33 +16,33 @@ Obecnie znajdujesz się na współrzędnych: x={gracz_x}, y={gracz_y}.""")
 while True:
     ruch = input("Podaj kierunek [w/s/a/d]: ")
     licznik += 1
-    end_bad = "Spadłeś z mapy i dopadły cię dzikusy :-( GAME OVER"
-    end_good = "znalazłeś worek złota! Gratulacje! :-)"
+    end_bad = "Spadłeś z mapy i dopadły cię dzikusy! GAME OVER :-("
+    end_good = "znalazłeś worek złota! GRATULACJE :-)"
     if ruch == "w":
         gracz_y += 1
         print(f"Przeszedłeś na współrzędne: x={gracz_x}, y={gracz_y}.")
-        if gracz_y - skarb_y >= -2 and gracz_y - skarb_y <= 2:
+        if abs(gracz_y - skarb_y) < 3:
             print("Ciepło!")
         else:
             print("Zimno!")
     elif ruch == "s":
         gracz_y -= 1
         print(f"Przeszedłeś na współrzędne: x={gracz_x}, y={gracz_y}.")
-        if gracz_y - skarb_y >= -2 and gracz_y - skarb_y <= 2:
+        if abs(gracz_y - skarb_y) < 3:
             print("Ciepło!")
         else:
             print("Zimno!")
     elif ruch == "a":
         gracz_x -= 1
         print(f"Przeszedłeś na współrzędne: x={gracz_x}, y={gracz_y}.")
-        if gracz_x - skarb_x >= -2 and gracz_x - skarb_x <= 2:
+        if abs(gracz_x - skarb_x) < 3:
             print("Ciepło!")
         else:
             print("Zimno!")
     elif ruch == "d":
         gracz_x += 1
         print(f"Przeszedłeś na współrzędne: x={gracz_x}, y={gracz_y}.")
-        if gracz_x - skarb_x >= -2 and gracz_x - skarb_x <= 2:
+        if abs(gracz_x - skarb_x) < 3:
             print("Ciepło!")
         else:
             print("Zimno!")
