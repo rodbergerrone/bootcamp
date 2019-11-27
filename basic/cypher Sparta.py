@@ -1,12 +1,46 @@
-a1, a2 = "abcdefghijklmnopqrstuvwxyz1234567890", "cdefghijklmnopqrstuvwxyzab3456789012"
+import textwrap
 
 def decrypt(message):
-    cypher = str.maketrans(a2, a1)
-    return message.translate(cypher)
+    # message = message.replace(' ', '.')
+    # filler = '.'
+    # num_filler = 25 * (len(message)//25+1) - len(message)
+    # gap = filler * num_filler
+    # message = message + gap
+    message = textwrap.fill(message, 25)
+    print(message)
+    print()
+    new_message = []
+    for n in range(25):
+        for linia in message.splitlines():
+            new_message += linia[n]
+        new_message += '\n'
+    while '\n' in new_message:
+        new_message.remove('\n')
+    list_to_str = ' '.join(map(str,new_message))
+    list_to_str = list_to_str.replace(' ', '')
+    list_to_str = textwrap.fill(list_to_str, 25)
+    return list_to_str
 
 def encrypt(message):
-    cypher = str.maketrans(a1, a2)
-    return message.translate(cypher)
+    message = message.replace(' ', '.')
+    filler = '.'
+    num_filler = 25 * (len(message)//25+1) - len(message)
+    gap = filler * num_filler
+    message = message + gap
+    message = textwrap.fill(message, 25)
+    print(message)
+    print()
+    new_message = []
+    for n in range(25):
+        for linia in message.splitlines():
+            new_message += linia[n]
+        new_message += '\n'
+    while '\n' in new_message:
+        new_message.remove('\n')
+    list_to_str = ' '.join(map(str,new_message))
+    list_to_str = list_to_str.replace(' ', '')
+    list_to_str = textwrap.fill(list_to_str, 25)
+    return list_to_str
 
 print("""~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Witamy w szyfratorze:
@@ -17,9 +51,11 @@ Witamy w szyfratorze:
 o = input("Co chcesz zrobić:")
 if o.lower() == 'decrypt':
     message = input("Wpisz wiadomość:")
-    print(f"Odszyfrowano:", decrypt(message))
+    print("Odszyfrowano:")
+    print(decrypt(message))
 elif o.lower() == 'encrypt':
     message = input("Wpisz wiadomość:")
-    print(f"Zaszyfrowano:", encrypt(message))
+    print("Zaszyfrowano:")
+    print(encrypt(message))
 else:
     print("Do zobaczenia")
