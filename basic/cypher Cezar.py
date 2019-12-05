@@ -23,8 +23,3 @@ elif o.lower() == 'encrypt':
     print(f"Zaszyfrowano:", encrypt(message))
 else:
     print("Do zobaczenia")
-
-
-# z zagadek: """Kqnglpg urqvmcpkg q ebvgtpcuvgl y utqfg."""
-
-# szyfr Vinengere
