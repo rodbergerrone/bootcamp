@@ -47,24 +47,49 @@ x = []
 #     dict_l[i] = i * i
 # print(dict_l)
 #
-import math
+# import math
+#
+# def square_root():
+#     C = 50
+#     H = 30
+#     d = []
+#     while True:
+#         D = input("Podaj liczbę:")
+#         if D == "koniec":
+#             break
+#         d.append(D)
+#     d = list(map(int, d))
+#     q = []
+#     for x in d:
+#         Q = (2 * C * x) / H
+#         Q = math.sqrt(Q)
+#         Q = int(round(Q, 0))
+#         q.append(Q)
+#     return q
+#
+# print(square_root())
+#
+# l = ['without', 'hello', 'bag', 'world']
+# l.sort()
+# print(l)
 
-def square_root():
-    C = 50
-    H = 30
-    d = []
-    while True:
-        D = input("Podaj liczbę:")
-        if D == "koniec":
-            break
-        d.append(D)
-    d = list(map(int, d))
-    q = []
-    for x in d:
-        Q = (2 * C * x) / H
-        Q = math.sqrt(Q)
-        Q = int(round(Q, 0))
-        q.append(Q)
-    return q
-
-print(square_root())
+import re
+haslo = input("Podaj hasło:")
+for i in haslo:
+    if len(haslo) < 6 or len(haslo) > 12:
+        print("Hasło niezgodne z regulaminem!")
+        break
+    if not re.search("[a-z]", i):
+        print("Hasło niezgodne z regulaminem!")
+        break
+    elif not re.search("[A-Z]", i):
+        print("Hasło niezgodne z regulaminem!")
+        break
+    elif not re.search("[1-9]", i):
+        print("Hasło niezgodne z regulaminem!")
+        break
+    elif not re.search("[$#@]", i):
+        print("Hasło niezgodne z regulaminem!")
+        break
+    else:
+        print("Hasło poprawne!")
