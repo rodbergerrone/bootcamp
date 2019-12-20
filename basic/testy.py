@@ -77,19 +77,20 @@ import re
 haslo = input("Podaj hasło:")
 for i in haslo:
     if len(haslo) < 6 or len(haslo) > 12:
-        print("Hasło niezgodne z regulaminem!")
+        print("Hasło za krótkie!")
         break
-    if not re.search("[a-z]", i):
-        print("Hasło niezgodne z regulaminem!")
-        break
-    elif not re.search("[A-Z]", i):
-        print("Hasło niezgodne z regulaminem!")
-        break
-    elif not re.search("[1-9]", i):
-        print("Hasło niezgodne z regulaminem!")
-        break
-    elif not re.search("[$#@]", i):
-        print("Hasło niezgodne z regulaminem!")
-        break
+    if not re.search("[a-z]", haslo):
+        print("Hasło nie zawiera wymagane małe litery!")
+        pass
+    elif not re.search("[A-Z]", haslo):
+        print("Hasło nie zawiera wymagane duże litery!")
+        pass
+    elif not re.search("[1-9]", haslo):
+        print("Hasło nie zawiera przynajmniej jednej cyfry!")
+        pass
+    elif not re.search("[$#@]", haslo):
+        print("Hasło nie zawiera znaków specjalnych!")
+        pass
     else:
-        print("Hasło poprawne!")
+        print("Hasło zgodne z reguleminem!")
+        break
