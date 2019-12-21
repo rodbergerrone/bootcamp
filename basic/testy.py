@@ -94,3 +94,5 @@ for i in haslo:
     else:
         print("Hasło zgodne z reguleminem!")
         break
+
+[x.upper()*2 for x in "Warszawa"]

@@ -55,6 +55,7 @@ assert "SUBMARINE".isupper() == True
 
 # sub in s        - sprwadza czy napis s zawiera napis sub
 assert "sun" in "sunshine"
+assert not ("san" in "sunshine")
 
 # len(s)        - zwraca ilość liter
 assert len("Skok") == 4
