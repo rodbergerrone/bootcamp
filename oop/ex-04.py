@@ -25,7 +25,8 @@ class Basket:
         return total_price
 
     def generate_report(self):
-        return f"Produkty w koszyku: \n-{produkt} ({self.id}), cena: {self.price} x {self.quantity}\nW sumie: {self.total_price}"
+        return f"Produkty w koszyku:\n-produkt (id), cena: x ilość\nW sumie:"
+
 
 if __name__ == "__main__":
     woda = Product(1, "Woda", 10)
