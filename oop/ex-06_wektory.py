@@ -25,8 +25,8 @@ class Vector:
         return (self.x ** 2 + self.y ** 2) == (other.x ** 2 + other.y ** 2)
 
 if __name__ == "__main__":
-    v1 = Vector(1, 2)
-    v2 = Vector(2, 3)
+    v1 = Vector(1, 3)
+    v2 = Vector(3, 1)
     v3 = v1 + v2
     print("Dodawanie:", v1 + v2)
     print("Odejmowanie:", v1 - v2)
