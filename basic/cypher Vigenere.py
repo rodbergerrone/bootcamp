@@ -4,7 +4,7 @@ def encrypt(message, key):
     plaintext_int = [ord(i) for i in message]
     new_message = ''
     for i in range(len(plaintext_int)):
-        value = (plaintext_int[i] + key_as_int[i % key_length]) % 26
+        value = (plaintext_int[i] + key_as_int[i % key_length]) % 52
         new_message += chr(value + 65)
     return new_message
 
@@ -14,8 +14,8 @@ def decrypt(message, key):
     ciphertext_int = [ord(i) for i in message]
     new_message = ''
     for i in range(len(ciphertext_int)):
-        value = (ciphertext_int[i] - key_as_int[i % key_length]) % 26
-        new_message += chr(value + 53)
+        value = (ciphertext_int[i] - key_as_int[i % key_length]) % 52
+        new_message += chr(value + 65)
     return new_message
 
 

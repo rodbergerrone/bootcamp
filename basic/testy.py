@@ -72,27 +72,22 @@ x = []
 # l = ['without', 'hello', 'bag', 'world']
 # l.sort()
 # print(l)
+#
+# [x.upper()*2 for x in "Warszawa"]
 
 import re
 haslo = input("Podaj hasło:")
 for i in haslo:
-    if len(haslo) < 6 or len(haslo) > 12:
-        print("Hasło za krótkie!")
-        break
-    if not re.search("[a-z]", haslo):
-        print("Hasło nie zawiera wymagane małe litery!")
+    if not len(haslo) < 6 or len(haslo) > 12:
+        pass
+    elif not re.search("[a-z]", haslo):
         pass
     elif not re.search("[A-Z]", haslo):
-        print("Hasło nie zawiera wymagane duże litery!")
         pass
     elif not re.search("[1-9]", haslo):
-        print("Hasło nie zawiera przynajmniej jednej cyfry!")
         pass
     elif not re.search("[$#@]", haslo):
-        print("Hasło nie zawiera znaków specjalnych!")
         pass
     else:
         print("Hasło zgodne z reguleminem!")
         break
-
-[x.upper()*2 for x in "Warszawa"]
