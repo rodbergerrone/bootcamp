@@ -1,3 +1,12 @@
+# Zadanie #15 ze slajdów:
+# Napisz grę polegającą na poszukiwaniu skarbu na dwuwymiarowej planszy o rozmiarach 10 na 10. Użytkownik może wprowadzać komendy zmieniające położenie postaci. Po każdym ruchu użytkownik powinien otrzymywać informację o tym, czy zmierza dobrym kierunku. Wyjście poza planszę oznacza koniec gry. Po znalezieniu skarbu wypisz liczbę ruchów wykorzystanych przez użytkownika na dojście do celu.
+# Dodatkowo (rozwinięcie dla chętnych):
+# :eight_spoked_asterisk: po wykonaniu większej liczby kroków niż dwukrotność minimalnej liczby kroków umieść skarb w nowym miejscu,
+# :eight_spoked_asterisk: z prawdopodobieństwem 1/5 nie podawaj graczowi wskazówki po wykonaniu kroku.
+# Komentarz:
+# Można się poruszać góra/dół/lewo/prawo wpisując odpowiednią komendę (proponuję typowe rozwiązanie z gier - odpowiednio literki: w/s/a/d). Proponuję zignorować spadanie z planszy mimo, że jest w zadaniu na slajdzie - według mnie psuje zabawę :slightly_smiling_face:
+
+
 from random import randrange
 gracz_x = randrange(1, 11)
 gracz_y = randrange(1, 11)

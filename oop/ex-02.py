@@ -17,6 +17,7 @@ class Employee:
         self._salary_to_pay = 0
         return result
 
+
 if __name__ == "__main__":
     employee = Employee("Jan", "Nowak", 100.0)
     employee.register_time(7)
@@ -28,5 +29,3 @@ if __name__ == "__main__":
     employee.register_time(5)
     employee.register_time(5)
     print(employee.pay_salary())
-
-

@@ -74,20 +74,35 @@ x = []
 # print(l)
 #
 # [x.upper()*2 for x in "Warszawa"]
+#
+# import re
+# haslo = input("Podaj hasło:")
+# for i in haslo:
+#     if not len(haslo) < 6 or len(haslo) > 12:
+#         pass
+#     elif not re.search("[a-z]", haslo):
+#         pass
+#     elif not re.search("[A-Z]", haslo):
+#         pass
+#     elif not re.search("[1-9]", haslo):
+#         pass
+#     elif not re.search("[$#@]", haslo):
+#         pass
+#     else:
+#         print("Hasło zgodne z reguleminem!")
+#         break
+#
+# items = [x for x in input().split(',')]
+# items.sort()
+# print(','.join(items))
+#
+# lines = input()
+# lines = lines.upper()
+# print(lines)
 
-import re
-haslo = input("Podaj hasło:")
-for i in haslo:
-    if not len(haslo) < 6 or len(haslo) > 12:
-        pass
-    elif not re.search("[a-z]", haslo):
-        pass
-    elif not re.search("[A-Z]", haslo):
-        pass
-    elif not re.search("[1-9]", haslo):
-        pass
-    elif not re.search("[$#@]", haslo):
-        pass
-    else:
-        print("Hasło zgodne z reguleminem!")
-        break
+remover = [x for x in input().split(' ')]
+for x in remover:
+    ile = remover.count(x)
+    if ile > 1:
+        remover.remove(x)
+print(' '.join(remover))

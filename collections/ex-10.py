@@ -1,3 +1,7 @@
+# zadanie #10 z collections:
+# Napisz program zliczajacy liczbe wystapien kazdego znaku w podanym przez uzytkownika napisie. (użyj słownika)
+
+
 napis = "Oko za oko, ząb za ząb"
 print(napis)
 literki = {}
