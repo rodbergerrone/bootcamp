@@ -95,7 +95,9 @@ Continue guessing. You save your neck this time!""")
     else:
         wrong_letters.append(letter)
         wrong_count += 1
-        if 4 > wrong_count >= 2:
+        if 2> wrong_count >= 0:
+            print(hangman[hangman_status])
+        elif 4 > wrong_count >= 2:
             print(hangman[0])
             hangman_status = 0
         elif 6 > wrong_count >= 4:
