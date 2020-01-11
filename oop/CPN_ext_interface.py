@@ -1,5 +1,7 @@
 class Gas_Station:
-    def __init__(self):
+    def __init__(self, nazwa, adres):
+        self.nazwa = nazwa
+        self.adres = adres
         self.E95_supply = 0
         self.E98_supply = 0
         self.ON_supply = 0
@@ -58,6 +60,8 @@ class Gas_Station:
             self.ON_premium_price = price
 
     def car_refuelling(self, type_of_fuel, amount, plate):
+        if self.E95_supply == 0 or self.E98_supply == 0 or self.ON_supply == 0 or self.ON_supply_supply == 0:
+            print("Sprzedaż niemożliwa")
         if type_of_fuel == "E95" and self.E95_price != 0:
             if amount <= self.E95_supply:
                 self.E95_supply -= amount
@@ -154,19 +158,19 @@ class Gas_Station:
     def gas_fuel_post(self):
         print("Dostępne paliwa:")
         if self.E95_supply > 0 and self.E95_price != 0:
-            print(f"\t- E95 - {self.E95_price}")
+            print(f"\t- E95 - {self.E95_price} PLN")
         else:
             print(f"\t- E95 - BRAK")
         if self.E98_supply > 0 and self.E98_price != 0:
-            print(f"\t- E98 - {self.E98_price}")
+            print(f"\t- E98 - {self.E98_price} PLN")
         else:
             print(f"\t- E98 - BRAK")
         if self.ON_supply > 0 and self.ON_price != 0:
-            print(f"\t- ON - {self.ON_price}")
+            print(f"\t- ON - {self.ON_price} PLN")
         else:
             print(f"\t- ON - BRAK")
         if self.ON_premium_supply > 0 and self.ON_premium_price != 0:
-            print(f"\t- ON premium - {self.ON_premium_price}")
+            print(f"\t- ON premium - {self.ON_premium_price} PLN")
         else:
             print(f"\t- ON premium - BRAK")
 
@@ -175,9 +179,9 @@ class Gas_Station:
 Kwota ze sprzedaży paliw: {self.gas_sell:.2f}"""
 
 
-Shell_Wolska = Gas_Station()
+Shell_Wolska = Gas_Station(nazwa="Shell", adres="ul. Wolska 190, Warszawa")
 while True:
-    print("""Program obsługi stacji Shell Wolska. Dostępne działania:
+    print(f"""Program obsługi stacji {Shell_Wolska.nazwa, Shell_Wolska.adres}. Dostępne działania:
 - (u)zupełnienie paliwa
 - (c)eny paliw
 - (s)rzedaż paliw
@@ -195,3 +199,20 @@ while True:
         print(Shell_Wolska.gas_station_account())
     if wybor == "z":
         print(Shell_Wolska.gas_station_pumping_and_balance(type_of_fuel="E95", amount=0, price=0))
+
+
+# TODO: przemyślec słownik klubu lojalnosciowej z get
+# 2. oraz sprzedaż niemożliwa jak nie ma paliwa
+# 3. skompresowanie kodu
+
+
+class Klient:
+    def __init__(self):
+        self._zatankowane = 0
+
+    @property
+    def rabat(self):
+        if self._zatankowane > 1000:
+            return 0.1
+        else:
+            return 0

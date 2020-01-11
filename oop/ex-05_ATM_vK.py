@@ -14,12 +14,9 @@ class CashMachine:
         #     if bill in (50, 100, 200):
         #         self._money.append(bill)
         #     else:
-        #         TODO raise
-        # TODO zweryfikować ilość miejsca na banknowy
         self._money.extend(bills)
 
     def withdraw_money(self, amount):
-        # TODO weryfikacja amount i raise
         collected_sum = 0
         collected_bills = []
         self._money.sort(reverse=True)
