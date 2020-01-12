@@ -1,4 +1,3 @@
-123
-qwe
-asd
-123
+Testowy zapis z konsoli do pliku
+Kolejny test z konsoli
+Trzeci test z konsoli
