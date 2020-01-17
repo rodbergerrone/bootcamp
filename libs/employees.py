@@ -1,38 +1,40 @@
 import json
-# import os # alternatywnie
-
+import os
 
 def main():
-    # if os.path.exists('employees.json'): # alternatywnie
+    #if os.path.exists('employees.json'):
     try:
         with open('employees.json') as f:
-            employees = json.load(f)
+            pracownicy = json.load(f)
     except json.decoder.JSONDecodeError:
-        employees = []
+        pracownicy = []
     except FileNotFoundError:
-        employees = []
+        pracownicy = []
 
-    action = input("Co chcesz zrobić? [d - dodaj, w - wypisz]")
-    if action == 'd':
-        imie = input("Imię:")
-        nazwisko = input("Nazwisko:")
-        rok_ur = int(input("Rok urodzenia:"))
-        pensja = float(input("Pensja:"))
-        employee = {
+    akcja = input("Co chcesz zrobic? [d - dodaj, w - wypisz] ")
+    if akcja == 'd':
+        imie = input("Imie: ")
+        nazwisko = input("Nazwisko: ")
+        rok_ur = input("Rok urodzenia: ")
+        pensja = float(input("Pensja: "))
+
+        pracownik = {
             'imie': imie,
             'nazwisko': nazwisko,
             'rok_ur': rok_ur,
-            'pensja': pensja
+            'pensja': pensja,
         }
-        employees.append(employee)
+        pracownicy.append(pracownik)
+
         with open('employees.json', 'w') as f:
-            json.dump(employee, f)
-    elif action == 'w':
-        for numer, employee in enumerate(employees):
-            print(f"  - [{numer+1}] {employee['imie']} {employee['nazwisko']} - rocznik: {employee['rok_ur']}, pensja: {employee['pensja']}")
+            json.dump(pracownicy, f, indent=4)
 
+    elif akcja == 'w':
+        for numer, pracownik in enumerate(pracownicy):
+            print(f" - [{numer+1}] {pracownik['imie']} {pracownik['nazwisko']}"
+                  f" - rok: {pracownik['rok_ur']}, "
+                  f"pensja: {pracownik['pensja']:.2f} PLN"
+                  )
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-
-# TODO: import z gita

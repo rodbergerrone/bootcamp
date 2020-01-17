@@ -1,17 +1,5 @@
 from collections import defaultdict
 
-# TODO: z oop ex-04.py
-class Car:
-    def __init__(self):
-        self._zatankowane = 0
-
-    @property
-    def rabat(self):
-        if self._zatankowane > 1000:
-            discount = 0.1
-        else:
-            discount = 0
-
 
 class Gas_Station:
     def __init__(self, nazwa, adres):
@@ -28,6 +16,7 @@ class Gas_Station:
         self.loyality_club = defaultdict(int)
         self.gas_buy = 0
         self.gas_sell = 0
+        self.discount = 0
 
     def gas_station_supplies(self):
         return f"""Stan poszczególnych paliw:
@@ -76,16 +65,13 @@ class Gas_Station:
         if type_of_fuel == "ON_premium":
             self.ON_premium_price = price
 
-    #TODO: albo tutaj
-    def discuont(self):
-        if self._zatankowane > 1000:
-            return 0.1
+    def car_gas_discount(self, plate):
+        if self.loyality_club[plate] > 1000:
+            self.discount = 0.1
         else:
-            return 0
+            self.discount = 0
 
     def car_refuelling(self, type_of_fuel, amount, plate):
-        # if self.E95_supply == 0 or self.E98_supply == 0 or self.ON_supply == 0 or self.ON_supply_supply == 0:
-        #     print("Sprzedaż niemożliwa")
         if type_of_fuel == "E95" and self.E95_price != 0:
             if amount <= self.E95_supply:
                 self.E95_supply -= amount
@@ -98,12 +84,8 @@ class Gas_Station:
                 car_sell = amount * self.E95_price
             else:
                 self.loyality_club[plate] += amount
-                if self.loyality_club[plate] >= 1000:
-                    self.gas_sell += amount * self.E95_price
-                    car_sell = amount * (self.E95_price - 0.10)
-                else:
-                    self.gas_sell += amount * self.E95_price
-                    car_sell = amount * self.E95_price
+                self.gas_sell += amount * self.E95_price
+                car_sell = amount * (self.E95_price - self.discount)
             print(f"Zatankowałeś {amount}l. E95 za {car_sell:.2f} zł. Stan karty lojalnościowej: {self.loyality_club[plate]}")
         if type_of_fuel == "E98" and self.E98_price != 0:
             if amount <= self.E98_supply:
@@ -203,11 +185,10 @@ while True:
         Shell_Wolska.gas_price_car(type_of_fuel=input("Podaj typ paliwa (E95/E98/ON/ON_premium):"), price=float(input("Podaj cenę sprzedaży:")))
         Shell_Wolska.gas_station_price_post()
     if wybor == "s":
-        Shell_Wolska.car_refuelling(type_of_fuel=input("Podaj typ paliwa (E95/E98/ON/ON_premium):"), amount=float(input("Podaj ilość:")), plate=input("Podaj nr rejestracyjny lub Brak:"))
+        car_plate = input("Podaj nr rejestracyjny lub wpisz Brak:")
+        Shell_Wolska.car_gas_discount(car_plate)
+        Shell_Wolska.car_refuelling(type_of_fuel=input("Podaj typ paliwa (E95/E98/ON/ON_premium):"), amount=float(input("Podaj ilość:")), plate=car_plate)
     if wybor == "o":
         print(Shell_Wolska.gas_station_accounts())
     if wybor == "z":
         print(Shell_Wolska.gas_station_supplies())
-
-
-# TODO: 1. sprzedaż niemożliwa jak nie ma paliwa

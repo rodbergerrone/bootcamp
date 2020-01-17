@@ -40,7 +40,6 @@ class CashMachine:
             return False
 
     def put_money(self, amount):
-        # TODO zweryfikować ilość miejsca na banknoty
         if type(amount) == list:
             if len(amount) > 10:
                 raise NotEnoughPlace("Wprowadziłeś za dużo banknotów na raz.")
@@ -56,10 +55,7 @@ class CashMachine:
         #         self.balance += amount
         return self.balance, self.bills
 
-        # TODO raise
-
     def withdraw_money(self, amount):
-        # TODO weryfikacja amount i raise
         collected_bills = []
         collected_sum = 0
         self.bills.sort(reverse=True)

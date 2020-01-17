@@ -1,0 +1,20 @@
+[
+    {
+        "imie": "Roger",
+        "nazwisko": "Burek-Bors",
+        "rok_ur": "1983",
+        "pensja": 12000.0
+    },
+    {
+        "imie": "Krisztina",
+        "nazwisko": "Bors-Burek",
+        "rok_ur": "1976",
+        "pensja": 6000.0
+    },
+    {
+        "imie": "Nyuszmok Klarcsi",
+        "nazwisko": "Bors-Burek",
+        "rok_ur": "2011",
+        "pensja": 0.0
+    }
+]
