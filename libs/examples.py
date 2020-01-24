@@ -1,5 +1,7 @@
 import time
 
+time.strftime('%Y.%m.%d %H:%M:%S %Z')
+
 t1 = time.time() # w sekundach
 t2 = time.time()
 print(t2 - t1)

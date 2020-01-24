@@ -5,7 +5,6 @@ class Pionek:
     def __init__(self):
         self.x = 0
         self.y = 0
-        self.sila_ataku = 15
 
     def umiesc_w_losowym_miejscu(self, plansza_wymiar_x, plansza_wymiar_y):
         self.x = random.randrange(0, plansza_wymiar_x)
@@ -29,21 +28,22 @@ class Pionek:
                 return
             self.x += 1
 
-    def zbierz_bron(self, bron):
-        if bron == "Miecz":
-            self.sila_ataku += 25
-        elif bron == "Pistolet":
-            self.sila_ataku += 50
-
-    def ulecz(self):
-        self.punkty_zycia += 40
-
 
 class Wojownik(Pionek):
     def __init__(self, imie):
         super().__init__()
         self.imie = imie
         self.punkty_zycia = 100
+        self.sila_ataku = 15
+
+    def zbierz_miecz(self):
+        self.sila_ataku += 25
+
+    def zbierz_pistolet(self):
+        self.sila_ataku += 50
+
+    def ulecz(self):
+        self.punkty_zycia += 40
 
 
 class Boss(Wojownik):
@@ -75,19 +75,16 @@ class Apteczka(Pionek):
 
 def plansza_jako_string(pionki, plansza_wymiar_x, plansza_wymiar_y):
     s = ""
-    z = "Poziomy życia: "
     for y in range(plansza_wymiar_y - 1, -1, -1):
         for x in range(plansza_wymiar_x):
             for pionek in pionki:
                 if pionek.x == x and pionek.y == y and pionek.punkty_zycia > 0:
                     s += pionek.imie[0] + " "
-                    z += f"{pionek.imie[0]}-{pionek.punkty_zycia} "
                     break
             else:  # nie znaleziono pionka na tym polu
                 s += '. '
         s += "\n"
-    print(s)
-    return f"{z}\n"
+    return s
 
     # Wersja z tekstowym zaznaczeniem polożenia
     # s = ""
@@ -98,8 +95,8 @@ def plansza_jako_string(pionki, plansza_wymiar_x, plansza_wymiar_y):
 
 if __name__ == "__main__":
     wojownicy = [Wojownik("Janusz"), Wojownik("Grażyna"), Boss("Dżesika"), Boss("Seba")]
-    bronie = [Pistolet("pistolet1"), Pistolet("pistolet2"), Miecz("miecz1"), Miecz("miecz2")]
-    apteczki = [Apteczka("apteczka1"), Apteczka("apteczka2"), Apteczka("apteczka3"), Apteczka("apteczka4")]
+    bronie = [Pistolet("pistolet"), Pistolet("pistolet"), Miecz("miecz"), Miecz("miecz")]
+    apteczki = [Apteczka("apteczka"), Apteczka("apteczka"), Apteczka("apteczka"), Apteczka("apteczka")]
     pionki = wojownicy + bronie + apteczki
     for pionek in pionki:
         pionek.umiesc_w_losowym_miejscu(10, 10)
@@ -112,19 +109,24 @@ if __name__ == "__main__":
         wojownicy[1].przesun(random.choice("wsad"), 10, 10)
         wojownicy[2].przesun(random.choice("wsad"), 10, 10)
         wojownicy[3].przesun(random.choice("wsad"), 10, 10)
-        print(Pionek)
+        z = "Poziom życia/siła: "
         for pionek in wojownicy:
-            for wojownik in wojownicy[1:]:
-                for apteczka in apteczki:
-                    for bron in bronie:
-                        if pionek.x == apteczka.x and pionek.y == apteczka.y:
-                            pionek.ulecz()
-                            apteczka.punkty_zycia = 0
-                        elif pionek.x == bron.x and pionek.y == bron.y:
-                            pionek.zbierz_bron(bron)
-                            bron.punkty_zycia = 0
-                        #TODO:
-                        elif pionek.x == wojownik.x and pionek.y == wojownik.y:
-                            wojownik.punkty_zycia -= pionek.sila_ataku
-                            pionek.punkty_zycia -= wojownik.sila_ataku
+            for apteczka in apteczki:
+                if pionek.x == apteczka.x and pionek.y == apteczka.y:
+                    pionek.ulecz()
+                    apteczka.punkty_zycia = 0
+            for bron in bronie:
+                if pionek.x == bron.x and pionek.y == bron.y:
+                    if bron.imie == "pistolet":
+                        pionek.zbierz_pistolet()
+                    if bron.imie == "miecz":
+                        pionek.zbierz_miecz()
+                    bron.punkty_zycia = 0
+            for przeciwnik in wojownicy:
+                if pionek.x == przeciwnik.x and pionek.y == przeciwnik.y:
+                    if przeciwnik.imie != pionek.imie:
+                        przeciwnik.punkty_zycia -= pionek.sila_ataku
+                        pionek.punkty_zycia -= przeciwnik.sila_ataku
+            z += f"{pionek.imie[0]}-{pionek.punkty_zycia}/{pionek.sila_ataku} "
         print(plansza_jako_string(pionki, 10, 10))
+        print(z)
