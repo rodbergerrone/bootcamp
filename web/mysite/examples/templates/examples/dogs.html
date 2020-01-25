@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Dogs list</title>
 </head>
 <body>
-$END$
+    <ul>
+        {% for dog in dogs %}
+        <li><a href="{% url 'dog' dog.id %}">{{dog}}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
