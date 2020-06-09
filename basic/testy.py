@@ -99,10 +99,23 @@ x = []
 # lines = input()
 # lines = lines.upper()
 # print(lines)
+#
+# remover = [x for x in input().split(' ')]
+# for x in remover:
+#     ile = remover.count(x)
+#     if ile > 1:
+#         remover.remove(x)
+# print(' '.join(remover))
+#
+# a = {"1", "2", "3"}
+# b = {"3", "4", "5"}
+# print(a | b)
 
-remover = [x for x in input().split(' ')]
-for x in remover:
-    ile = remover.count(x)
-    if ile > 1:
-        remover.remove(x)
-print(' '.join(remover))
+print("""W
+A
+S
+D
+F
+G""".splitlines())
+
+print(list("WASDFG"))
