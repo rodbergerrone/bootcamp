@@ -1,4 +1,4 @@
-# Zadanie Domowe: Stacja Paliw
+j# Zadanie Domowe: Stacja Paliw
 # Zaimplementuj klasę StacjaPaliw umożliwiającą obsługę stacji paliw. Klasa powinna posiadać metody umożliwiające
 # uzupełnienie zapasów paliwa, ustalenie ceny danego paliwa, zatankowanie samochodu oraz generowanie tablicy dostępnych
 # paliw wraz z cenami. Zaimplementuj zestaw testów oraz interfejs tekstowy wykorzystujący stworzoną klasę.
