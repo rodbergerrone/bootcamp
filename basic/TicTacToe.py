@@ -59,9 +59,28 @@ if __name__ == "__main__":
         x = int(input("Wybierz gdzie postawić krzyżyk:")) - 1
         krzyzyk(pola_wyboru[x][0], pola_wyboru[x][1])
         krzyzyk_pozycje.append(pola_wyboru[x])
-        print(krzyzyk_pozycje)
+        if len(krzyzyk_pozycje) >= 3:
+            if krzyzyk_pozycje[0][1] == krzyzyk_pozycje[1][1] and krzyzyk_pozycje[0][1] == krzyzyk_pozycje[2][1]:
+                print("KRZYŻYKI WYGRAŁY!!!")
+                break
+            if krzyzyk_pozycje[0][0] == krzyzyk_pozycje[1][0] and krzyzyk_pozycje[0][0] == krzyzyk_pozycje[2][0]:
+                print("KRZYŻYKI WYGRAŁY!!!")
+                break
+            if (krzyzyk_pozycje[0][0] + krzyzyk_pozycje[1][0] + krzyzyk_pozycje[2][0]) == 3 and (krzyzyk_pozycje[0][1] + krzyzyk_pozycje[1][1] + krzyzyk_pozycje[2][1]) == 3:
+                print("KRZYŻYKI WYGRAŁY!!!")
+                break
         y = int(input("Wybierz gdzie postawić kółko:")) - 1
         kolko(pola_wyboru[y][0], pola_wyboru[y][1])
         kolko_pozycje.append(pola_wyboru[y])
+        if len(kolko_pozycje) >= 3:
+            if kolko_pozycje[0][1] == kolko_pozycje[1][1] and kolko_pozycje[0][1] == kolko_pozycje[2][1]:
+                print("KÓŁKA WYGRAŁY!!!")
+                break
+            if kolko_pozycje[0][0] == kolko_pozycje[1][0] and kolko_pozycje[0][0] == kolko_pozycje[2][0]:
+                print("KÓŁKA WYGRAŁY!!!")
+                break
+            if (kolko_pozycje[0][0] + kolko_pozycje[1][0] + kolko_pozycje[2][0]) == 3 and (kolko_pozycje[0][1] + kolko_pozycje[1][1] + kolko_pozycje[2][1]) == 3:
+                print("KÓŁKA WYGRAŁY!!!")
+                break
         ilosc_ruchow += 2
-    print("GAME OVER - NO WINNER")
+    print("KONIEC GRY - BRAK ZWYCIĘZCY")
