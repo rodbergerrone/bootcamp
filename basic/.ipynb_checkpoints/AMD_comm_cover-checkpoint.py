@@ -37,4 +37,4 @@ single_node(a)
 print(f"Pokrycie 2 masztów o zasiegu {a} km każdy, oddalonych od siebie o {b} km, w km2:")
 print(two_nodes(b, a, a))
 
-#TODO: integracja z matplotlib
+#TODO: integracja z matplotlib i folium na mapie Warszawy
