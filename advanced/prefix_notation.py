@@ -39,19 +39,25 @@ def max_result_expression(expression: str, variables: Dict[str, Tuple[int, int]]
         int:  the maximum result of the expression for any combination of the supplied variables.
         None: in the case there is no valid result for any combination of the supplied variables.
     """
-    if variables:
+    if "x" in expression and variables:
         max_results = defaultdict(int)
-        for r in range(3, 5):
-            max_results[t] = prefix_eval([t if t in '+-*/' else int(t)
-                                          for t in re.split(r"\s+", expression)])
+        for v in range(variables.get('x')[0], variables.get('x')[1]):
+            expression_combination = expression.replace('x', f'{v}')
+            max_results[v] = prefix_eval([t if t in '+-*/' else int(t)
+                                          for t in re.split(r"\s+", expression_combination)])
+        print("In following expression:", expression)
         for key, value in max_results.items():
-            print(f"For value: {key}, max result is: {value}")
+            print(f"    If 'x' has value: {key}, than the max result is: {value}")
     else:
-        return prefix_eval([t if t in '+-*/' else int(t)
-                            for t in re.split(r"\s+", expression)])
+        print("In following expression:", expression)
+        print("    The max result is:", prefix_eval([t if t in '+-*/' else int(t)
+                            for t in re.split(r"\s+", expression)]))
 
 
 if __name__ == '__main__':
-    e = "- 4 * - 5 3 5"
-    v = {'x': (3, 5)}
-    print(max_result_expression(e, v))
+    e = "- 4 * - 5 4 x"
+    v = {'x': (4, 25)}
+    max_result_expression(e, v)
+    e = "- 4 * - 5 4 13"
+    v = 0
+    max_result_expression(e, v)
